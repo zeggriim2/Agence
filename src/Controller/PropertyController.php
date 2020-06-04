@@ -27,15 +27,11 @@ class PropertyController extends AbstractController
      */
     public function index()
     {
-
-        $property = $this->repository->find(1);
-
-        $property->setTitle("Mon premier titre");
-        $this->entityManager->flush();
-
+        $properties = $this->repository->findAllVisible();
 
         return $this->render('property/index.html.twig', [
-            'current_menu' => 'properties'
+            'current_menu' => 'properties',
+            'properties' => $properties
         ]);
     }
 
